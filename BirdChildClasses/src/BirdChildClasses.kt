@@ -1,7 +1,7 @@
 import kotlin.reflect.jvm.internal.impl.serialization.deserialization.builtins.BuiltInsResourceLoader
 
 open class Bird(var name: String, var wing: Int, var beak: String){
-    fun fly(){
+    open fun fly(){
         println("Fly")
     }
 }
@@ -9,6 +9,10 @@ open class Bird(var name: String, var wing: Int, var beak: String){
 class Lark(name: String, wing: Int, beak: String): Bird(name, wing, beak){
     fun singHitone(){
         println("sing hitone")
+    }
+
+    override fun fly(){
+        println("Quick fly")
     }
 }
 
@@ -21,18 +25,22 @@ class Parrot:Bird{
     fun speak(){
         println("speak: $language")
     }
+
+    override fun fly(){
+        println("Slow fly")
+    }
 }
 
 fun main() {
-    val lark = Lark("mylark", 2, "short")
-    val parrot = Parrot("mylark", 2, "short", "English")
+    val lark:Bird = Lark("mylark", 2, "short")
+    val parrot:Bird = Parrot("mylark", 2, "short", "English")
 
     println("lark - name: ${lark.name}")
-    println("parrot - name: ${parrot.name}, lang: ${parrot.language}")
+    //println("parrot - name: ${parrot.name}, lang: ${parrot.language}")
 
-    lark.singHitone()
+    //lark.singHitone()
     lark.fly()
 
-    parrot.speak()
+    //parrot.speak()
     parrot.fly()
 }
