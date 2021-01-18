@@ -27,6 +27,7 @@ class Parrot:Bird{
     }
 
     override fun fly(){
+        super.fly()
         println("Slow fly")
     }
 }
